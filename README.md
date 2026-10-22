@@ -84,34 +84,7 @@ ecommerce-funnel-analytics/
 
 ## 🏗️ Project Architecture
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        DATA GENERATION                          │
-│  generate.py → users.parquet + events.parquet + orders.parquet  │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                      MEDALLION PIPELINE                         │
-│                                                                 │
-│  bronze.py        silver.py              gold.py               │
-│  Raw landing  →   Cleaned + typed   →    Aggregated marts      │
-│  (bronze_db)      (silver_db)            (gold_db)             │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                  ┌──────────┴──────────┐
-                  ▼                     ▼
-        ┌─────────────────┐   ┌──────────────────────┐
-        │   SQL Queries   │   │    Power BI Report   │
-        │  (7 .sql files) │   │  (3 dashboard pages) │
-        └─────────────────┘   └──────────────────────┘
-                  │
-                  ▼
-        ┌─────────────────┐
-        │    Notebooks    │
-        │  EDA + A/B Test │
-        └─────────────────┘
-```
+![Architecture](assets/architecture.png)
 
 ---
 
